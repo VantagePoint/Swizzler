@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>entry</key>
+        
+        <dict>
+            <key>cell</key>
+            <string>PSLinkCell</string>
+            <key>icon</key>
+            <string></string>
+            <key>label</key>
+            <string>Swizzler</string>
+        </dict>
+
+        <!-- Start Items -->
+        <key>items</key>
+        <array>
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Swizzler Version: 0.1.0 - 10 Jun 2016</string>
+            </dict>
+
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>These settings only take effect when you restart an app - they do not change the settings of currently running apps.</string>
+            </dict>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Global on/off -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Swizzler Global On/Off</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <false/>
+                <key>defaults</key>
+                <string>me.vtky.swizzler</string>
+                <key>key</key>
+                <string>settings_GlobalOnOff</string>
+                <key>label</key>
+                <string>Inject Swizzler into Apps</string>
+            </dict>
+            <!-- End Global on/off -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Syslog on/off -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Syslog</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <false/>
+                <key>defaults</key>
+                <string>me.vtky.swizzler</string>
+                <key>key</key>
+                <string>settings_log2syslog</string>
+                <key>label</key>
+                <string>Log Everything to Syslog</string>
+            </dict>
+            <!-- End Syslog on/off -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Log File on/off -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Log File</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <false/>
+                <key>defaults</key>
+                <string>me.vtky.swizzler</string>
+                <key>key</key>
+                <string>settings_log2file</string>
+                <key>label</key>
+                <string>Log Everything to File</string>
+            </dict>
+            <!-- End Log File on/off -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Anti-JB on/off -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Disable Jailbreak Detection</string>
+                <!-- <key>footerText</key> -->
+                <!-- <string>Jailbreak Detection Methods:&#xA;  lstat | stat | open | statfs | fork&#xA;  system | sysctlbyname</string> -->
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <false/>
+                <key>defaults</key>
+                <string>me.vtky.swizzler</string>
+                <key>key</key>
+                <string>settings_disableJBDetection</string>
+                <key>label</key>
+                <string>Disable Jailbreak Detection</string>
+            </dict>
+            <!-- End Anti-JB on/off -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Anti-Debug on/off -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Disable Anti-Debugging</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <false/>
+                <key>defaults</key>
+                <string>me.vtky.swizzler</string>
+                <key>key</key>
+                <string>settings_disable_antidebugging</string>
+                <key>label</key>
+                <string>Disable Anti-Debugging</string>
+            </dict>
+            <!-- End Anti-Debug on/off -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Disable SSL Pinning</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <false/>
+                <key>defaults</key>
+                <string>me.vtky.swizzler</string>
+                <key>key</key>
+                <string>settings_disable_sslpinning</string>
+                <key>label</key>
+                <string>Disable SSL Pinning</string>
+            </dict>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Blank Space -->
+            <!-- <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+            </dict> -->
+            <!-- End Blank Space -->
+
+            <!-- Target Selection -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Target Selection</string>
+            </dict>
+
+            <dict>
+                <key>bundle</key>
+                <string>AppList</string>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>isController</key>
+                <true/>
+                <key>label</key>
+                <string>Select Target Apps</string>
+                <key>ALSettingsPath</key>
+                <string>/var/mobile/Library/Preferences/me.vtky.swizzler.plist</string>
+                <key>ALSettingsKeyPrefix</key>
+                <string>targets_</string>
+                <key>ALChangeNotification</key>
+                <string>ch.ringwald.btc-mouse.settings</string>
+                <key>ALAllowsSelection</key>
+                <string>1</string>
+                <key>ALSectionDescriptors</key>
+                <array>
+                    <dict>
+                        <key>items</key>
+                        <array/>
+                        <key>footer-title</key>
+                        <string>Inject Swizzler into these applications.</string>
+                    </dict>
+                    <dict>
+                        <key>title</key>
+                        <string>User Applications</string>
+                        <key>predicate</key>
+                        <string>isSystemApplication = FALSE</string>
+                        <key>cell-class-name</key>
+                        <string>ALSwitchCell</string>
+                        <key>icon-size</key>
+                        <string>29</string>
+                        <key>suppress-hidden-apps</key>
+                        <string>1</string>
+                    </dict>
+                </array>
+            </dict>
+            <!-- End Target Selection -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Hooking C Functions -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>C Functions</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>C Functions 2</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>C Functions 3</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>C Common Crypto</string>
+            </dict>
+            <!-- End Hooking C Functions -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Hooking OpenSSL Functions -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>OpenSSL</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>SSL Functions</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>Crypto Functions</string>
+            </dict>
+            <!-- End Hooking OpenSSL Functions -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Hooking Core Foundation -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Foundation</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>Core Foundation</string>
+            </dict>
+            <!-- End Hooking Core Foundation -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Hooking Foundation -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Foundation</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>Foundation</string>
+            </dict>
+            <!-- End Hooking Foundation -->         
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Hooking iOSFrameworks -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>iOS Frameworks</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>iOS Frameworks</string>
+            </dict>
+            <!-- End Hooking iOSFrameworks -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Hooking JSONC -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>JSON-C</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>JSON-C</string>
+            </dict>
+            <!-- End Hooking JSONC -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Hooking sqlite3 -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>sqlite3</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>sqlite3</string>
+            </dict>
+            <!-- End Hooking sqlite3 -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->  
+            <!-- Hooking Good GFE -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Good For Enterprise</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>GFE</string>
+            </dict>
+            <!-- End Hooking Good GFE -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+            <!-- Hooking Good Dynamics -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Good Dynamics</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>Good Dynamics</string>
+            </dict>
+            <!-- End Hooking Good Dynamics -->
+
+
+
+      </array><!-- End Items -->
+      <key>title</key>
+      <string>Swizzler</string>
+   </dict>
+</plist>

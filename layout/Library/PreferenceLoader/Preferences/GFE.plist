@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+        <!--  -->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGFE_Activate</string>
+            <key>label</key>
+            <string>Activate GFE Hooking</string>
+        </dict>
+
+
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string></string>
+        </dict>
+        
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGFE_SecurityLock</string>
+            <key>label</key>
+            <string>SecurityLock</string>
+        </dict>
+
+
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGFE_passwordbruteforce</string>
+            <key>label</key>
+            <string>Enable Password Brute Force</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGFE_remotewipe</string>
+            <key>label</key>
+            <string>Disable Remote Wipe</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGFE_remotelock</string>
+            <key>label</key>
+            <string>Disable Remote Lock</string>
+        </dict>
+
+
+    </array>
+
+    <key>title</key>
+    <string>GFE</string>
+    </dict>
+</plist>

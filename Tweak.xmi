@@ -1,0 +1,383 @@
+/*
+ Swizzler for iOS
+
+ Created by Vincent Tan (vincent@vantagepoint.sg)
+
+ License: GNU GPLv3
+
+ 	@saurik: Substrate http://www.cydiasubstrate.com/
+ 	@Steve Nygard: Class-Dump https://github.com/nygard/class-dump
+ 	@BishopFox: iSpy as inspiration for the creation of Swizzler https://github.com/BishopFox/iSpy
+ 	@nabla-c0d3: iOS SSL Killswitch https://github.com/iSECPartners/ios-ssl-kill-switch
+	@DHowett @rpetrich: theos
+	@robbiehanson: CocoaLumberjack
+	@robbiehanson: CocoaHTTPServer
+
+ File Description:
+  
+	*************************
+	** Swizzler Tweak Main **
+	*************************
+*/
+#import "swizzler.common.h"
+
+
+#import <semaphore.h>
+#import <sys/socket.h>
+#import <sys/time.h>
+#import <sys/stat.h>
+#import <sys/semaphore.h>
+#import <sys/sem.h>
+#import <sys/uio.h>
+#import <sys/mman.h>
+#import <sys/ioctl.h>
+#import <aio.h>
+
+// Stuff needed by CommonCrypto
+#import <CommonCrypto/CommonCryptor.h>
+#import <CommonCrypto/CommonHMAC.h>
+
+
+
+// Web Server Stuff
+#import "CocoaHTTPServer/HTTPServer.h"
+#import "CocoaHTTPServer/swizzler.HTTPConnection.h"
+#import "CocoaHTTPServer/swizzler.HTTPSConnection.h"
+
+// C
+#import "hooks/C/C.h"
+
+// Core Foundation
+#import "hooks/CoreFoundation/CoreFoundation.h"
+
+// Foundation
+#import "hooks/Foundation/NSData.xm"
+#import "hooks/Foundation/NSString.xm"
+#import "hooks/Foundation/NSURL.xm"
+#import "hooks/Foundation/NSURLConnection.xm"
+#import "hooks/Foundation/NSURLConnectionDelegate.xm"
+#import "hooks/Foundation/NSURLRequest.xm"
+#import "hooks/Foundation/NSURLSession.xm"
+#import "hooks/Foundation/NSURLSessionConfiguration.xm"
+#import "hooks/Foundation/NSXMLParser.xm"
+
+// iOS Frameworks
+#import "hooks/iOSFrameworks/LAContext.xm"
+#import "hooks/iOSFrameworks/SecureTransport.xm"
+#import "hooks/iOSFrameworks/Security.xm"
+#import "hooks/iOSFrameworks/UIKit.xm"
+
+// OpenSSL
+#import "hooks/OpenSSL/OpenSSL.h"
+
+
+// GFE
+// #import "hooks/GFE/headers/DFID.xm"
+#import "hooks/GFE/headers/GmmAppCore.xm"
+// #import "hooks/GFE/headers/GmmEasyActivationHandler.xm"
+#import "hooks/GFE/headers/GmmKeychain.xm"
+// #import "hooks/GFE/headers/GmmSecureStringObjC.xm"
+// #import "hooks/GFE/headers/GTEncryptedFile.xm"
+#import "hooks/GFE/headers/GTJsonCommandProcessor.xm"
+// #import "hooks/GFE/headers/GTSocketCommunication.xm"	
+#import "hooks/GFE/headers/SecurityCore.xm"
+#import "hooks/GFE/headers/SecurityLock.xm"
+#import "hooks/GFE/headers/SecurityLockBase.xm"
+
+
+// Good Dynamics
+	// Official
+#import "hooks/GoodDynamics/GD/GD.h"
+#import "hooks/GoodDynamics/GD.framework/Headers/GDiOS.xm"
+#import "hooks/GoodDynamics/GD.framework/Headers/GDNETiOS.xm"
+#import "hooks/GoodDynamics/GD.framework/Headers/GDFileSystem.xm"
+
+	// Class Dumped
+#import "hooks/GoodDynamics/GD.framework/class_dumped/GCDAsyncSocket.xm"
+#import "hooks/GoodDynamics/GD.framework/class_dumped/GDAppController.xm"
+#import "hooks/GoodDynamics/GD.framework/class_dumped/GDLocalStorageObject.xm"
+#import "hooks/GoodDynamics/GD.framework/class_dumped/GDFileHandle.xm"
+// #import "hooks/GoodDynamics/GD.framework/class_dumped/GDURLProtocol.xm"
+#import "hooks/GoodDynamics/GD.framework/class_dumped/GTJsonCommandProcessor.xm"
+#import "hooks/GoodDynamics/GD.framework/class_dumped/GTSocketCommunication.xm"
+// #import "hooks/GoodDynamics/GD.framework/class_dumped/GDSecureStoragePwdMgr.xm"
+
+	// C++
+#import "hooks/GoodDynamics/GD/CPPMethods/PolicyProcessor.xm" 
+#import "hooks/GoodDynamics/GD/CPPMethods/GDSecureStorage.xm" 
+#import "hooks/GoodDynamics/GD/CPPMethods/GDSSLSocket.xm"
+#import "hooks/GoodDynamics/GD/CPPMethods/jailbreak.xm"
+
+// json-c
+#import "hooks/json-c/json_tokener.xm"
+
+// sqlite
+#import "hooks/sqlite3/sqlite3_sqlcipher.h"
+
+
+
+
+%ctor
+{
+	// 
+	NSString *bundleId = [[[NSBundle mainBundle] bundleIdentifier] copy];
+
+	// 
+	NSMutableDictionary *plist = [[NSMutableDictionary alloc] initWithContentsOfFile:@PREFERENCEFILE];
+	
+	// Identifying which target applications are selected in the menu to hook onto
+	NSString *appKey = [NSString stringWithFormat:@"targets_%@", bundleId];
+
+	// If global hooking is ON and if application is selected to be hooked
+	if (plist && [[plist objectForKey:@"settings_GlobalOnOff"] boolValue] && [[plist objectForKey:appKey] boolValue])
+	{
+		NSLog(@"########################################");
+		NSLog(@"   _____         _           __         ");
+		NSLog(@"  / ___/      __(_)_______  / /__  _____");
+		NSLog(@"  \\__ \\ | /| / / /_  /_  / / / _ \\/ ___/");
+		NSLog(@" ___/ / |/ |/ / / / /_/ /_/ /  __/ /    ");
+		NSLog(@"/____/|__/|__/_/ /___/___/_/\\___/_/     ");
+		NSLog(@"#Swizzler Version: 0.1.0 - 10 June 2016#");
+		NSLog(@"########################################");
+		NSLog(@"############## Entry Point #############");               
+
+
+		// Initialize Logging to Console
+		if ([[plist objectForKey:@"settings_log2syslog"] boolValue])
+		{
+			[DDLog addLogger:[DDASLLogger sharedInstance]];
+		}
+
+		// Initialize Logging to File
+		if ([[plist objectForKey:@"settings_log2file"] boolValue])
+		{
+			DDFileLogger *fileLogger = [DDFileLogger new];
+			fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
+			fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+
+			[DDLog addLogger:fileLogger];
+			NSLog(@"########################################");
+			NSLog(@"Log file is at: %@", [[fileLogger currentLogFileInfo] filePath]);
+			NSLog(@"########################################");
+		}
+
+
+		/*****************************
+			HTTP(S) Servers
+		******************************/
+		if ([[plist objectForKey:@"settings_GDHTTP_server"] boolValue])
+		{
+			int port = [[plist objectForKey:@"settings_GDHTTP_server_port"] intValue];
+
+			// Init instance of Servers
+			HTTPServer *httpServer;
+			httpServer = [[HTTPServer alloc] init];
+
+			// // Tell the server to broadcast its presence via Bonjour.
+			// // This allows browsers such as Safari to automatically discover our service.
+			// // [httpServer setType:@"_http._tcp."];
+			
+			// Normally there's no need to run our server on any specific port.
+			// Technologies like Bonjour allow clients to dynamically discover the server's port at runtime.
+			// However, for easy testing you may want force a certain port so you can just hit the refresh button.
+			[httpServer setPort:port];
+			[httpServer setConnectionClass:[swizzlerHTTPConnection class]];
+			
+			// Serve files from the standard Sites folder
+			NSString *docRoot = [@"/var/www/" stringByExpandingTildeInPath];
+			// NSLog(@"Setting document root: %@", docRoot);
+			
+			[httpServer setDocumentRoot:docRoot];
+			
+			NSError *error = nil;
+			if(![httpServer start:&error])
+			{
+				DDLogVerbose(@"Error starting HTTP Server: %@", error);
+			} else {
+				DDLogVerbose(@"GD HTTP Server Port set to: %d", port);
+			}
+		}
+
+
+		if ([[plist objectForKey:@"settings_GDHTTPS_server"] boolValue])
+		{
+			int port = [[plist objectForKey:@"settings_GDHTTPS_server_port"] intValue];
+
+			HTTPServer *httpsServer;
+			httpsServer = [[HTTPServer alloc] init];
+			[httpsServer setPort:port];
+			[httpsServer setConnectionClass:[swizzlerHTTPSConnection class]];
+
+			NSString *docRoot = [@"/var/www/" stringByExpandingTildeInPath];
+			[httpsServer setDocumentRoot:docRoot];
+
+			NSError *error = nil;
+			if(![httpsServer start:&error])
+			{
+				DDLogVerbose(@"Error starting HTTPS Server: %@", error);
+			} else {
+				DDLogVerbose(@"GD HTTPS Server Port set to: %d", port);
+			}
+		}
+
+
+		/*****************************
+			C Hooks
+		******************************/
+		C_function_hooks_section2();
+		C_function_hooks_section3();
+		// Functions overlap with OpenSSL. Using OpenSSL instead.
+		// C_function_hooks_section3ssl();
+		CommonCrypto_function_hooks();
+
+		/*****************************
+			Core Foundation Hooks
+		******************************/
+		CFData_function_hooks();
+		CFReadStream_function_hooks();
+		CFSocket_function_hooks();
+		CFString_function_hooks();
+		CFWriteStream_function_hooks();
+
+		/*****************************
+			Foundation Hooks
+		******************************/
+		if ([[plist objectForKey:@"settings_HookFoundation_NSData"] boolValue])
+		{
+			%init(NSData);
+		}
+		if ([[plist objectForKey:@"settings_HookFoundation_NSString"] boolValue])
+		{
+			%init(NSString);
+		}
+		if ([[plist objectForKey:@"settings_HookFoundation_NSURL"] boolValue])
+		{
+			%init(NSURL);
+		}
+		if ([[plist objectForKey:@"settings_HookFoundation_NSURLConnection"] boolValue])
+		{
+			%init(NSURLConnection);
+		}
+		if ([[plist objectForKey:@"settings_HookFoundation_NSURLConnectionDelegate"] boolValue])
+		{
+			%init(NSURLConnectionDelegate);
+		}
+		if ([[plist objectForKey:@"settings_HookFoundation_NSURLRequest"] boolValue])
+		{
+			%init(NSURLRequest);
+		}
+		if ([[plist objectForKey:@"settings_HookFoundation_NSURLSession"] boolValue])
+		{
+			%init(NSURLSession);
+		}
+		if ([[plist objectForKey:@"settings_HookFoundation_NSURLSessionConfiguration"] boolValue])
+		{
+			%init(NSURLSessionConfiguration);
+		}
+		if ([[plist objectForKey:@"settings_HookFoundation_NSXMLParser"] boolValue])
+		{
+			%init(NSXMLParser);
+		}
+
+		/*****************************
+			LocalAuthentication Hooks
+		******************************/
+		if ([[plist objectForKey:@"settings_HookLocalAuthentication"] boolValue])
+		{
+			%init(LAContext);
+		}
+
+		/*****************************
+			Secure Transport Hooks
+		******************************/
+		SecureTransport_hooks();
+
+		/*****************************
+			Security Hooks
+		******************************/
+		Security_hooks();
+
+		/*****************************
+			UIKit Hooks
+		******************************/
+		if ([[plist objectForKey:@"settings_HookUIKit_UIDeviceiOSVersion_enable"] boolValue])
+    	{
+    		%init(UIKit);
+    	}
+
+		/*****************************
+			OpenSSL Hooks
+		******************************/
+		OpenSSL_SSL_function_hooks();
+		OpenSSL_Crypto_function_hooks();
+
+		/*****************************
+			JSON-C Hooks
+		******************************/
+		jsonc_function_hooks();
+
+		/*****************************
+			sqlite3 & sqlcipher Hooks
+		******************************/
+		sqlite3_sqlcipher_function_hooks();
+
+		/*****************************
+			Good For Enterprise Hooks
+		******************************/
+		if ([[plist objectForKey:@"settings_HookGFE_Activate"] boolValue])
+		{
+			%init(GFE);
+		}
+		
+		/*****************************
+			Good Dynamics Hooks
+		******************************/
+		if ([[plist objectForKey:@"settings_disableJBDetection"] boolValue]) {
+			MSHookFunction(MSFindSymbol(NULL, "__ZN2GD23PolicyComplianceChecker21checkComplianceLockedERNS_24PolicyComplianceRuleTypeE"),(void *)replaced__ZN2GD23PolicyComplianceChecker21checkComplianceLockedERNS_24PolicyComplianceRuleTypeE,(void **)&orig__ZN2GD23PolicyComplianceChecker21checkComplianceLockedERNS_24PolicyComplianceRuleTypeE);
+			MSHookFunction(MSFindSymbol(NULL, "__ZN2GD23PolicyComplianceChecker22extractComplianceRulesER6GDJsonRSt6vectorINS_20PolicyComplianceRuleESaIS4_EE"),(void *)replaced__ZN2GD23PolicyComplianceChecker22extractComplianceRulesER6GDJsonRSt6vectorINS_20PolicyComplianceRuleESaIS4_EE,(void **)&orig__ZN2GD23PolicyComplianceChecker22extractComplianceRulesER6GDJsonRSt6vectorINS_20PolicyComplianceRuleESaIS4_EE);
+		}
+
+		if ([[plist objectForKey:@"settings_HookGD_password_bruteforce"] boolValue])
+		{
+			MSHookFunction(MSFindSymbol(NULL, "__ZN2GD15GDSecureStorage14handleWrongPwdEv"),(void *)replaced__ZN2GD15GDSecureStorage14handleWrongPwdEv,(void **)&orig__ZN2GD15GDSecureStorage14handleWrongPwdEv);
+		}
+		if ([[plist objectForKey:@"settings_HookGD_process_lock"] boolValue])
+		{
+			MSHookFunction(MSFindSymbol(NULL, "__ZN2GD15PolicyProcessor17processLockActionERKNS_12PolicyRecordE"),(void *)replaced__ZN2GD15PolicyProcessor17processLockActionERKNS_12PolicyRecordE,(void **)&orig__ZN2GD15PolicyProcessor17processLockActionERKNS_12PolicyRecordE);
+		}
+		// if ([[plist objectForKey:@"settings_HookGD_process_wipe"] boolValue])
+		// {
+			MSHookFunction(MSFindSymbol(NULL, "__ZN2GD15PolicyProcessor17processWipeActionERKNS_12PolicyRecordE"),(void *)replaced__ZN2GD15PolicyProcessor17processWipeActionERKNS_12PolicyRecordE,(void **)&orig__ZN2GD15PolicyProcessor17processWipeActionERKNS_12PolicyRecordE);
+		// }
+			MSHookFunction(MSFindSymbol(NULL, "__ZN2GD15PolicyProcessor10handleWipeENS_24PolicyComplianceRuleTypeE"),(void *)replaced__ZN2GD15PolicyProcessor10handleWipeENS_24PolicyComplianceRuleTypeE,(void **)&orig__ZN2GD15PolicyProcessor10handleWipeENS_24PolicyComplianceRuleTypeE);
+			MSHookFunction(MSFindSymbol(NULL, "__ZN2GD15GDSecureStorage10wipeDeviceENS_11WIPE_REASONE"),(void *)replaced__ZN2GD15GDSecureStorage10wipeDeviceENS_11WIPE_REASONE,(void **)&orig__ZN2GD15GDSecureStorage10wipeDeviceENS_11WIPE_REASONE);
+			MSHookFunction(MSFindSymbol(NULL, "__ZN2GD20PolicyCommandHandler16handleWipeActionEP6GDJson"),(void *)replaced__ZN2GD20PolicyCommandHandler16handleWipeActionEP6GDJson,(void **)&orig__ZN2GD20PolicyCommandHandler16handleWipeActionEP6GDJson);
+			MSHookFunction(MSFindSymbol(NULL, "__ZN2GD12GDCTPHandler13wipeContainerENS_11WIPE_REASONE"),(void *)replaced__ZN2GD12GDCTPHandler13wipeContainerENS_11WIPE_REASONE,(void **)&orig__ZN2GD12GDCTPHandler13wipeContainerENS_11WIPE_REASONE);
+
+			// MSHookFunction(MSFindSymbol(NULL, "__ZN2GD9SslSocket18verify_certificateEv"),(void *)replaced__ZN2GD9SslSocket18verify_certificateEv,(void **)&orig__ZN2GD9SslSocket18verify_certificateEv);
+
+
+		if ([[plist objectForKey:@"settings_HookGD_GDiOS"] boolValue])
+		{
+			%init(GDiOS);
+		}
+		if ([[plist objectForKey:@"settings_HookGD_GDNETiOS"] boolValue])
+		{
+			%init(GDNETiOS);
+		}
+		if ([[plist objectForKey:@"settings_HookGD_GDFileSystem"] boolValue])
+		{
+			%init(GDFileSystem);
+		}
+
+		GD_sqlite3enc_hooks();
+
+		// GD_C_FileSystem_hooks();
+	
+		%init(GDDumpedHeaders);
+
+
+
+	}// if(!plist)	
+}// %ctor
+

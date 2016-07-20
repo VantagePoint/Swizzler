@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!-- OpenSSL Crypto -->
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Encryption</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_EVP_EncryptInit</string>
+            <key>label</key>
+            <string>EVP_EncryptInit</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_EVP_EncryptUpdate</string>
+            <key>label</key>
+            <string>EVP_EncryptUpdate</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_EVP_EncryptFinal</string>
+            <key>label</key>
+            <string>EVP_EncryptFinal</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_EVP_DecryptInit</string>
+            <key>label</key>
+            <string>EVP_DecryptInit</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_EVP_DecryptUpdate</string>
+            <key>label</key>
+            <string>EVP_DecryptUpdate</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_EVP_DecryptFinal</string>
+            <key>label</key>
+            <string>EVP_DecryptFinal</string>
+        </dict>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>HMAC</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_HMAC</string>
+            <key>label</key>
+            <string>HMAC</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_HMAC_Init_ex</string>
+            <key>label</key>
+            <string>HMAC_Init_ex</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_HMAC_Update</string>
+            <key>label</key>
+            <string>HMAC_Update</string>
+        </dict>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Key Generation</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_Crypto_PKCS5_PBKDF2_HMAC</string>
+            <key>label</key>
+            <string>PKCS5_PBKDF2_HMAC</string>
+        </dict>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>SSL Pinning Data</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_modify_x509</string>
+            <key>label</key>
+            <string>Modify x509 Data</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>detail</key>
+            <string>PSDetailController</string>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_CommonName</string>
+            <key>label</key>
+            <string>Common Name</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>detail</key>
+            <string>PSDetailController</string>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_OrgName</string>
+            <key>label</key>
+            <string>Organizational Name</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>detail</key>
+            <string>PSDetailController</string>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_OrgUnitName</string>
+            <key>label</key>
+            <string>Organizational Unit Name</string>
+        </dict>
+    </array>
+
+    <key>title</key>
+    <string>OpenSSL Crypto</string>
+    </dict>
+</plist>
+<!-- End OpenSSL Crypto -->

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!-- Hooking Good Dynamics -->
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>JSON-C</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookJSONC_json_tokener_parse</string>
+            <key>label</key>
+            <string>json_tokener_parse</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookJSONC_json_object_object_add</string>
+            <key>label</key>
+            <string>json_object_object_add</string>
+        </dict>
+
+
+    </array>
+
+    <key>title</key>
+    <string>JSON-C</string>
+    </dict>
+</plist>
+<!-- End Hooking Good Dynamics -->

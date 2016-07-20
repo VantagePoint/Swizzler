@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!-- Hooking C Common Crypto -->
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+        <!-- Common Cryptographic Algorithm Interfaces -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Common Cryptographic Algorithm Interfaces</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCCryptorCreate</string>
+            <key>label</key>
+            <string>CCCryptorCreate</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCCryptorCreateFromData</string>
+            <key>label</key>
+            <string>CCCryptorCreateFromData</string>
+        </dict>
+<!--         <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCCryptorRelease</string>
+            <key>label</key>
+            <string>CCCryptorRelease</string>
+        </dict>-->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCCryptorUpdate</string>
+            <key>label</key>
+            <string>CCCryptorUpdate</string>
+        </dict>
+<!--        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCCryptorFinal</string>
+            <key>label</key>
+            <string>CCCryptorFinal</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCCryptorReset</string>
+            <key>label</key>
+            <string>CCCryptorReset</string>
+        </dict> -->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCCrypt</string>
+            <key>label</key>
+            <string>CCCrypt</string>
+        </dict>
+        <!-- End Common Cryptographic Algorithm Interfaces -->
+
+        <!-- Common HMAC Algorithm Interfaces -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Common HMAC Algorithm Interfaces</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCHmacInit</string>
+            <key>label</key>
+            <string>CCHmacInit</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCHmacUpdate</string>
+            <key>label</key>
+            <string>CCHmacUpdate</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCHmacFinal</string>
+            <key>label</key>
+            <string>CCHmacFinal</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CCHmac</string>
+            <key>label</key>
+            <string>CCHmac</string>
+        </dict>
+        <!-- End Common HMAC Algorithm Interfaces -->
+
+
+
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Common Crypto SHA</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CC_SHA1</string>
+            <key>label</key>
+            <string>CC_SHA1</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CC_SHA256</string>
+            <key>label</key>
+            <string>CC_SHA256</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCCommonCrypto_CC_SHA512</string>
+            <key>label</key>
+            <string>CC_SHA512</string>
+        </dict>
+
+
+
+
+
+    </array>
+
+    <key>title</key>
+    <string>C Common Crypto</string>
+    </dict>
+</plist>
+<!-- End Hooking C Common Crypto -->

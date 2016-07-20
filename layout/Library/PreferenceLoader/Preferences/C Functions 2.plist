@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!-- Hooking CFString -->
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+        <!-- Searching Strings -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Searching Strings</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_syscall</string>
+            <key>label</key>
+            <string>syscall</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2__exit</string>
+            <key>label</key>
+            <string>_exit</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2___syscall</string>
+            <key>label</key>
+            <string>__syscall</string>
+        </dict>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+        <!-- Date and Time -->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_gettimeofday</string>
+            <key>label</key>
+            <string>gettimeofday</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_settimeofday</string>
+            <key>label</key>
+            <string>settimeofday</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_adjtime</string>
+            <key>label</key>
+            <string>adjtime</string>
+        </dict>
+        <!-- End Date and Time -->
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+        <!-- File System Interface -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>File System Interface</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_chdir</string>
+            <key>label</key>
+            <string>chdir</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_fchdir</string>
+            <key>label</key>
+            <string>fchdir</string>
+        </dict>
+
+<!-- link
+symlink
+readlink
+unlink
+rmdir
+rename
+mkdir -->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_fstat</string>
+            <key>label</key>
+            <string>fstat</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_lstat</string>
+            <key>label</key>
+            <string>lstat</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_stat</string>
+            <key>label</key>
+            <string>stat</string>
+        </dict>
+
+<!-- fstat64
+lstat64
+stat64
+chown
+fchown
+chmod
+fchmod
+umask -->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_access</string>
+            <key>label</key>
+            <string>access</string>
+        </dict>
+
+<!-- futimes
+utimes
+ftruncate
+truncate
+mknod
+lchown
+chflags
+fchflags -->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_statfs</string>
+            <key>label</key>
+            <string>statfs</string>
+        </dict>
+        <!-- End File System Interface -->
+
+
+        <!-- Inter-process Communication -->
+<!-- semctl
+semget
+semop
+sem_open
+sem_close
+sem_unlink
+sem_wait
+sem_trywait
+sem_post -->
+        <!-- End Inter-process Communication -->
+
+
+
+        <!-- Job Control -->
+<!-- setsid
+getsid
+getpgid
+getpgrp
+setpgid
+setpgrp -->
+        <!-- End Job Control -->
+
+        <!-- Low-Level Input / Output -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Low-Level Input / Output</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_open</string>
+            <key>label</key>
+            <string>open</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_read</string>
+            <key>label</key>
+            <string>read</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_pread</string>
+            <key>label</key>
+            <string>pread</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_readv</string>
+            <key>label</key>
+            <string>readv</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_write</string>
+            <key>label</key>
+            <string>write</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_pwrite</string>
+            <key>label</key>
+            <string>pwrite</string>
+        </dict>
+<!-- close
+writev
+lseek
+mmap
+munmap
+msync
+shm_open
+shm_unlink
+select
+sync
+fsync
+aio_read
+aio_write
+aio_error
+aio_return
+aio_suspend
+aio_cancel
+fcntl
+dup
+dup2
+ioctl -->
+
+        <!-- End Low-Level Input / Output -->
+
+
+        <!-- Pipe and FIFO -->
+<!-- pipe
+mkfifo -->
+        <!-- End Pipe and FIFO -->
+
+
+        <!-- Processes -->
+<!-- getpid
+getppid -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Processes</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_fork</string>
+            <key>label</key>
+            <string>fork</string>
+        </dict>
+
+<!-- vfork
+waitpid
+wait
+wait4
+wait3
+execve -->
+        <!-- End Processes -->
+
+
+        <!-- Signal Handling -->
+<!-- kill
+killpg -->
+        <!-- End Signal Handling -->
+
+
+        <!-- Sockets -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Sockets</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_bind</string>
+            <key>label</key>
+            <string>bind</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_getsockname</string>
+            <key>label</key>
+            <string>getsockname</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_socket</string>
+            <key>label</key>
+            <string>socket</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_socketpair</string>
+            <key>label</key>
+            <string>socketpair</string>
+        </dict>
+
+<!-- shutdown -->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_connect</string>
+            <key>label</key>
+            <string>connect</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_listen</string>
+            <key>label</key>
+            <string>listen</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_accept</string>
+            <key>label</key>
+            <string>accept</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_getpeername</string>
+            <key>label</key>
+            <string>getpeername</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_send</string>
+            <key>label</key>
+            <string>send</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_sendto</string>
+            <key>label</key>
+            <string>sendto</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_recv</string>
+            <key>label</key>
+            <string>recv</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_recvfrom</string>
+            <key>label</key>
+            <string>recvfrom</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_getsockopt</string>
+            <key>label</key>
+            <string>getsockopt</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_setsockopt</string>
+            <key>label</key>
+            <string>setsockopt</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_sendmsg</string>
+            <key>label</key>
+            <string>sendmsg</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_recvmsg</string>
+            <key>label</key>
+            <string>recvmsg</string>
+        </dict>
+        <!-- End Sockets -->
+
+
+        <!-- Users and Groups -->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_geteuid</string>
+            <key>label</key>
+            <string>geteuid</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_getuid</string>
+            <key>label</key>
+            <string>getuid</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_getegid</string>
+            <key>label</key>
+            <string>getegid</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_getgid</string>
+            <key>label</key>
+            <string>getgid</string>
+        </dict>
+        <!-- End Users and Groups -->
+
+
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Ptrace</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_ptrace</string>
+            <key>label</key>
+            <string>ptrace</string>
+        </dict>
+
+
+        <!-- Mach -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Mach</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookCFunctions2_task_get_exception_ports</string>
+            <key>label</key>
+            <string>task_get_exception_ports</string>
+        </dict>
+        <!-- End Mach -->
+
+
+    </array>
+
+    <key>title</key>
+    <string>C Functions 2</string>
+    </dict>
+</plist>
+<!-- End Hooking CFString -->

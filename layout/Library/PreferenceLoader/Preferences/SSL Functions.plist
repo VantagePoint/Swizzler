@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!-- OpenSSL SSL -->
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>SESSIONS</string>
+        </dict>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>CONNECTIONS</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookOpenSSL_SSL_SSL_read</string>
+            <key>label</key>
+            <string>SSL_read</string>
+        </dict>
+<!-- ================================================================== -->
+<!-- ================================================================== -->
+
+    </array>
+
+    <key>title</key>
+    <string>OpenSSL SSL</string>
+    </dict>
+</plist>
+<!-- End OpenSSL SSL -->

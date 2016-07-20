@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!-- Hooking Good Dynamics -->
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGD_password_bruteforce</string>
+            <key>label</key>
+            <string>Enable Password Brute Force</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGD_process_lock</string>
+            <key>label</key>
+            <string>Stop Remote Lock</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGD_process_wipe</string>
+            <key>label</key>
+            <string>Stop Remote Wipe</string>
+        </dict>
+
+
+        <!-- Searching Strings -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Good Dynamics</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGD_GDiOS</string>
+            <key>label</key>
+            <string>GDiOS</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookGD_GDNETiOS</string>
+            <key>label</key>
+            <string>GDNETiOS</string>
+        </dict>
+        <!-- End Searching Strings -->
+
+        <!-- Proxy Settings -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>GDHttpRequest Proxy</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_GDHttpRequest_proxy_enable</string>
+            <key>label</key>
+            <string>GDHttpRequest Proxy</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>detail</key>
+            <string>PSDetailController</string>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_GDHttpRequest_proxy_ip</string>
+            <key>label</key>
+            <string>Proxy Server IP</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>detail</key>
+            <string>PSDetailController</string>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_GDHttpRequest_proxy_port</string>
+            <key>label</key>
+            <string>Proxy Server Port</string>
+        </dict>
+        <!-- End Proxy Settings -->
+
+
+
+        <!-- Web Servers Settings -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Web Server</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_GDHTTP_server</string>
+            <key>label</key>
+            <string>GD HTTP Server</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>detail</key>
+            <string>PSDetailController</string>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_GDHTTP_server_port</string>
+            <key>label</key>
+            <string>GD HTTP Server Port</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_GDHTTPS_server</string>
+            <key>label</key>
+            <string>GD HTTPS Server</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>detail</key>
+            <string>PSDetailController</string>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_GDHTTPS_server_port</string>
+            <key>label</key>
+            <string>GD HTTPS Server Port</string>
+        </dict>
+        <!-- End Web Servers Settings -->
+
+
+
+
+        <!-- sqlite3enc Settings -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>sqlite3enc</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_hookGD_sqlite3enc_open</string>
+            <key>label</key>
+            <string>sqlite3enc_open</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_hookGD_sqlite3enc_open_v2</string>
+            <key>label</key>
+            <string>sqlite3enc_open_v2</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_hookGD_sqlite3enc_import</string>
+            <key>label</key>
+            <string>sqlite3enc_import</string>
+        </dict>
+        <!-- End sqlite3enc Settings -->
+    </array>
+
+    <key>title</key>
+    <string>Good Dynamics</string>
+    </dict>
+</plist>
+<!-- End Hooking Good Dynamics -->

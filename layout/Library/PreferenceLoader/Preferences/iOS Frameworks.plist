@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!-- Hooking iOS Frameworks -->
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+
+        <!-- Local Authentication -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>LocalAuthentication</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookLocalAuthentication</string>
+            <key>label</key>
+            <string>LocalAuthentication</string>
+        </dict>
+
+
+
+        <!-- Security -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Security Framework</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookSecurity_SecKeyEncrypt</string>
+            <key>label</key>
+            <string>SecKeyEncrypt</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookSecurity_SecKeyDecrypt</string>
+            <key>label</key>
+            <string>SecKeyDecrypt</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookSecurity_SecKeyRawSign</string>
+            <key>label</key>
+            <string>SecKeyRawSign</string>
+        </dict>
+
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookSecurity_SecKeyRawVerify</string>
+            <key>label</key>
+            <string>SecKeyRawVerify</string>
+        </dict>
+
+
+
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>UIKit</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookUIKit_UIDeviceiOSVersion_enable</string>
+            <key>label</key>
+            <string>Change iOS Device Version</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>detail</key>
+            <string>PSDetailController</string>
+            <key>defaults</key>
+            <string>me.vtky.swizzler</string>
+            <key>key</key>
+            <string>settings_HookUIKit_UIDeviceiOSVersion_version</string>
+            <key>label</key>
+            <string>iOS Version</string>
+        </dict>
+
+
+
+    </array>
+
+    <key>title</key>
+    <string>iOS Frameworks</string>
+    </dict>
+</plist>
+<!-- End Hooking iOS Frameworks -->

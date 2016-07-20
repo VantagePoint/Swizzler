@@ -1,0 +1,9 @@
+Package: me.vtky.swizzler
+Name: swizzler
+Depends: mobilesubstrate, applist, preferenceloader, syslogd
+Version: 0.1.0
+Architecture: iphoneos-arm
+Description: Swizzler
+Maintainer: Vincent Tan
+Author: Vincent Tan
+Section: Tweaks
