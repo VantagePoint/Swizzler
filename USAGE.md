@@ -15,6 +15,7 @@ To enable Swizzler to work on an app, Swizzler must be turned on globally and an
 ## Key Features
 
 1. Proxy App Traffic
+
    A key feature of Swizzler is to proxy traffic of an app irregardless of whether the app adheres to the iOS HTTP Proxy. This is done by hooking the Obj-C Foundation Methods NSURLConnection and NSURLSession.
 
    To enable proxying of traffic, enter the proxy server IP and Port, enable the wanted proxy method, close the app and restart.
@@ -23,4 +24,5 @@ To enable Swizzler to work on an app, Swizzler must be turned on globally and an
 
 
 2. Using an iOS app as a proxy
+
    TBD!
