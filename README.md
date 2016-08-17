@@ -27,4 +27,4 @@ GNU GPLv3
 4. make package install
 
 ## Usage
-Please refer to the Usage document (https://github.com/vtky/Swizzler/USAGE.md)
+Please refer to the [Usage document](https://github.com/vtky/Swizzler/blob/master/USAGE.md)
